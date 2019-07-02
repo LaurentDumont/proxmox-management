@@ -13,18 +13,21 @@
           {% for key, value in dh1_vms.items() %}
           <p>{{ key}} - {{ value }}</p>
           {% endfor %}
+          <a href="/start_dh1" class="btn btn-primary" role="button" aria-pressed="true">Start DH1 Lab VMs</a>
         </div>
         <div class="col-sm">
           <p>Proxmox-DH-LAB-2</p>
           {% for key, value in dh2_vms.items() %}
           <p>{{ key}} - {{ value }}</p>
           {% endfor %}
+          <a href="/start_dh2" class="btn btn-primary" role="button" aria-pressed="true">Start DH2 Lab VMs</a>
         </div>
         <div class="col-sm">
           <p>Proxmox-DH-LAB-3</p>
           {% for key, value in dh3_vms.items() %}
           <p>{{ key}} - {{ value }}</p>
           {% endfor %}
+          <a href="/start_dh3" class="btn btn-primary" role="button" aria-pressed="true">Start DH3 Lab VMs</a>
         </div>
       </div>
     </div>
