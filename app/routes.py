@@ -53,3 +53,40 @@ def get_dh_vm():
     # Need to find node where the VM is located first.
 
     return render_template('proxmox.html', dh1_vms=sorted_vm_dict_dh1, dh2_vms=sorted_vm_dict_dh2, dh3_vms=sorted_vm_dict_dh3, title="Dreamhack Lab Status")
+
+@app.route('/start_dh1', methods = ['POST'])
+def start_dh1():
+  PROXMOX_HOST = app.config.get("PROXMOX_HOST")
+  PROXMOX_USER = app.config.get("PROXMOX_USER")
+  PROXMOX_PASSWORD = app.config.get("PROXMOX_PASSWORD")
+  VERIFY_SSL = False
+  try:
+    proxmox_response = requests.get("https://"+PROXMOX_HOST+":8006", timeout=5, verify=False)
+  except Exception as e:
+    return render_template('error.html', error_message=str(e), title="Error page")
+  proxmox_api_session = ProxmoxAPI(PROXMOX_HOST, user=PROXMOX_USER, password=PROXMOX_PASSWORD, verify_ssl=VERIFY_SSL)
+  
+  vm_id_list = {}
+  vm_pool = proxmox_api_session.pools.get("DH-LAB-1")
+  for vm in vm_pool["members"]:
+    proxmox_api_session.nodes(vm["node"]).qemu(vm["vmid"]).status.post('start')
+  
+  return ('', 204)
+
+@app.route('/stop_dh1', methods = ['POST'])
+def stop_dh1():
+  PROXMOX_HOST = app.config.get("PROXMOX_HOST")
+  PROXMOX_USER = app.config.get("PROXMOX_USER")
+  PROXMOX_PASSWORD = app.config.get("PROXMOX_PASSWORD")
+  VERIFY_SSL = False
+  try:
+    proxmox_response = requests.get("https://"+PROXMOX_HOST+":8006", timeout=5, verify=False)
+  except Exception as e:
+    return render_template('error.html', error_message=str(e), title="Error page")
+  proxmox_api_session = ProxmoxAPI(PROXMOX_HOST, user=PROXMOX_USER, password=PROXMOX_PASSWORD, verify_ssl=VERIFY_SSL)
+  
+  vm_id_list = {}
+  vm_pool = proxmox_api_session.pools.get("DH-LAB-1")
+  for vm in vm_pool["members"]:
+    proxmox_api_session.nodes(vm["node"]).qemu(vm["vmid"]).status.post('stop')
+  return ('', 204)

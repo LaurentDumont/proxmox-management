@@ -10,23 +10,34 @@
       <div class="row">
         <div class="col-sm">
           <p>Proxmox-DH-LAB-1</p>
+          <ul class="list-group">
           {% for key, value in dh1_vms.items() %}
-          <p>{{ key}} - {{ value }}</p>
+          <li class="list-group-item">{{ key}} - {{ value }}</li>
           {% endfor %}
-          <a href="/start_dh1" class="btn btn-primary" role="button" aria-pressed="true">Start DH1 Lab VMs</a>
+        </ul>
+        <p></p>
+          <form action="/start_dh1" method="post">
+            <input type="submit" value="Start all DH1 Lab VMs" class="btn btn-primary" role="button" aria-pressed="true">
+            </form>
+          <p></p>
+          <form action="/stop_dh1" method="post">
+            <input type="submit" value="Stop all DH1 Lab VMs" class="btn btn-primary" role="button" aria-pressed="true">
+          </form>
         </div>
         <div class="col-sm">
           <p>Proxmox-DH-LAB-2</p>
-          {% for key, value in dh2_vms.items() %}
-          <p>{{ key}} - {{ value }}</p>
-          {% endfor %}
+          <ul class="list-group">
+            {% for key, value in dh1_vms.items() %}
+            <li class="list-group-item">{{ key}} - {{ value }}</li>
+            {% endfor %}
           <a href="/start_dh2" class="btn btn-primary" role="button" aria-pressed="true">Start DH2 Lab VMs</a>
         </div>
         <div class="col-sm">
           <p>Proxmox-DH-LAB-3</p>
-          {% for key, value in dh3_vms.items() %}
-          <p>{{ key}} - {{ value }}</p>
-          {% endfor %}
+          <ul class="list-group">
+            {% for key, value in dh1_vms.items() %}
+            <li class="list-group-item">{{ key}} - {{ value }}</li>
+            {% endfor %}
           <a href="/start_dh3" class="btn btn-primary" role="button" aria-pressed="true">Start DH3 Lab VMs</a>
         </div>
       </div>
