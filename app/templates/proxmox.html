@@ -9,36 +9,91 @@
     <div class="container">
       <div class="row">
         <div class="col-sm">
-          <p>Proxmox-DH-LAB-1</p>
-          <ul class="list-group">
-          {% for key, value in dh1_vms.items() %}
-          <li class="list-group-item">{{ key}} - {{ value }}</li>
-          {% endfor %}
-        </ul>
+          <p><h1 class="display-4">DH Lab 1</h1></p>
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">VM Name</th>
+                <th scope="col">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+              {% for key, value in dh1_vms.items() %}
+              <th scope="row">{{ loop.index }}</th>
+                <td>{{ key }}</td>
+                <td>{{ value }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
         <p></p>
-          <form action="/start_dh1" method="post">
+          <form action="/start_dh1?lab=DH-LAB-1" method="post">
             <input type="submit" value="Start all DH1 Lab VMs" class="btn btn-primary" role="button" aria-pressed="true">
             </form>
           <p></p>
-          <form action="/stop_dh1" method="post">
+          <form action="/stop_dh1?lab=DH-LAB-1" method="post">
             <input type="submit" value="Stop all DH1 Lab VMs" class="btn btn-primary" role="button" aria-pressed="true">
           </form>
         </div>
         <div class="col-sm">
-          <p>Proxmox-DH-LAB-2</p>
-          <ul class="list-group">
-            {% for key, value in dh1_vms.items() %}
-            <li class="list-group-item">{{ key}} - {{ value }}</li>
-            {% endfor %}
-          <a href="/start_dh2" class="btn btn-primary" role="button" aria-pressed="true">Start DH2 Lab VMs</a>
+          <p><h1 class="display-4">DH Lab 2</h1></p>
+          <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">VM Name</th>
+                  <th scope="col">Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                {% for key, value in dh2_vms.items() %}
+                <th scope="row">{{ loop.index }}</th>
+                  <td>{{ key }}</td>
+                  <td>{{ value }}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+        <p></p>
+          <form action="/start_dh1?lab=DH-LAB-2" method="post">
+            <input type="submit" value="Start all DH2 Lab VMs" class="btn btn-primary" role="button" aria-pressed="true">
+            </form>
+          <p></p>
+          <form action="/stop_dh1?lab=DH-LAB-2" method="post">
+            <input type="submit" value="Stop all DH2 Lab VMs" class="btn btn-primary" role="button" aria-pressed="true">
+          </form>
         </div>
         <div class="col-sm">
-          <p>Proxmox-DH-LAB-3</p>
-          <ul class="list-group">
-            {% for key, value in dh1_vms.items() %}
-            <li class="list-group-item">{{ key}} - {{ value }}</li>
-            {% endfor %}
-          <a href="/start_dh3" class="btn btn-primary" role="button" aria-pressed="true">Start DH3 Lab VMs</a>
+          <p><h1 class="display-4">DH Lab 3</h1></p>
+          <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">VM Name</th>
+                  <th scope="col">Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                {% for key, value in dh3_vms.items() %}
+                <th scope="row">{{ loop.index }}</th>
+                  <td>{{ key }}</td>
+                  <td>{{ value }}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+        <p></p>
+          <form action="/start_dh1?lab=DH-LAB-3" method="post">
+            <input type="submit" value="Start all DH3 Lab VMs" class="btn btn-primary" role="button" aria-pressed="true">
+            </form>
+          <p></p>
+          <form action="/stop_dh1?lab=DH-LAB-3" method="post">
+            <input type="submit" value="Stop all DH3 Lab VMs" class="btn btn-primary" role="button" aria-pressed="true">
+          </form>
         </div>
       </div>
     </div>
