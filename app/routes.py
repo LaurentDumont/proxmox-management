@@ -54,12 +54,12 @@ def get_dh_vm():
     # Need to find node where the VM is located first.
 
     return render_template('proxmox.html', dh1_vms=sorted_vm_dict_dh1, dh2_vms=sorted_vm_dict_dh2, dh3_vms=sorted_vm_dict_dh3, title="Dreamhack Lab Status")
-lab_env
-lab_env
-lab_env
-lab_env
-lab_env
-lab_envRD")
+
+@app.route('/start_dh1', methods = ['POST'])
+def start_dh1():
+  PROXMOX_HOST = app.config.get("PROXMOX_HOST")
+  PROXMOX_USER = app.config.get("PROXMOX_USER")
+  PROXMOX_PASSWORD = app.config.get("PROXMOX_PASSWORD")
   VERIFY_SSL = False
   try:
     proxmox_response = requests.get("https://"+PROXMOX_HOST+":8006", timeout=5, verify=False)
